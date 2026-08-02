@@ -1,0 +1,59 @@
+.heroSection {
+  color: var(--text-ternary);
+  background-color: var(--bg-secondary);
+  width: 100%;
+  min-height: 70vh; /* Reduced height so users see content below fold */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 750px; /* Constrain width so text stays 2-3 lines max */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(
+    2rem,
+    5vw,
+    3.25rem
+  ); /* Scales smoothly across mobile & desktop */
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 600px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Optional styling for quick CTAs */
+.btnPrimary {
+  background-color: var(--accent-color, #0066cc);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btnSecondary {
+  border: 1px solid currentColor;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+}

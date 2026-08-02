@@ -1,22 +1,5 @@
 :root {
   /* Brand & Accents */
-  --color-main: #3b83ff; /* Electric Blue (Primary Buttons & Links) */
-  --color-secondary: #0b1b3d; /* Deep Navy (Card Headers & Badges) */
-  --color-accent-main: #8be343; /* Hummingbird Lime Green (CTAs & Highlights) */
-  --color-accent-secondary: #5ccfe6; /* Cool Cyan (Hover States & Icons) */
-
-  /* Text Hierarchy */
-  --text-main: #f8fafc; /* Crisp White (Headings & Main Text) */
-  --text-secondary: #bdbdc4; /* Soft Grey (Subtitles & Footers) */
-
-  /* Surfaces & Canvas */
-  --bg-main: #0d0d0f; /* Deep Dark Canvas */
-  --bg-surface: #151518; /* Slightly Lighter Card/Modal Background */
-  --border-color: rgba(255, 255, 255, 0.08); /* Subtle Subtle Glass Line */
-}
-
-:root {
-  /* Brand & Accents */
   --color-main: #0b1b3dd3; /* Deep Corporate Navy (Primary Buttons) */
   --color-secondary: #007bff; /* Vibrant Hummingbird Blue */
   --color-accent-main: #7ec699; /* Mint / Lime Accent (Badges) */

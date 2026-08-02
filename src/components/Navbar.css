@@ -1,0 +1,129 @@
+:root {
+  --color-background: #ffffff;
+  --color-surface: #f3f4f6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-primary: #3b82f6;
+  --color-border: #e5e7eb;
+  --font-family-sans-serif: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --navbar-height: 70px;
+  --container-width: 1200px;
+  --transition-speed: 0.2s;
+  --border-radius: 6px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family-sans-serif);
+  background-color: #f9fafb;
+  line-height: 1.6;
+}
+.content {
+  min-height: 150vh;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: calc(var(--navbar-height) + 2rem) 1.5rem;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-speed) ease;
+}
+
+.navbar {
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.navbar__brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-ternary);
+  margin-right: 2rem;
+}
+
+.navbar__nav {
+  flex-grow: 1;
+}
+.primary-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  white-space: nowrap; /* Prevent links from wrapping */
+}
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* The "More" dropdown item */
+#more-menu-item {
+  position: relative; /* Anchor for the dropdown */
+  display: none; /* Hidden by default, shown by JS */
+}
+
+.more-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 200px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  z-index: 1001;
+}
+
+/* Show the dropdown on hover/focus */
+#more-menu-item:hover .more-dropdown,
+#more-menu-item:focus-within .more-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.more-dropdown li {
+  border-bottom: 1px solid var(--color-border);
+}
+.more-dropdown li:last-child {
+  border-bottom: none;
+}
+.more-dropdown .nav-link {
+  width: 100%;
+  padding: 0.75rem 1rem;
+}
