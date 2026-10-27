@@ -1,18 +1,16 @@
-/* ---------------- NAVBAR ---------------- */
+/* Original coming soon styling. Everything is scoped under .coming-soon
+   so it stays independent of the site theme in index.css */
 
-.company {
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.logo {
-  height: 46px;
+.coming-soon {
+  font-family: Inter, system-ui, sans-serif;
+  color: white;
+  background: #0d0d0f;
+  overflow-x: hidden;
 }
 
 /* ---------------- HERO ---------------- */
 
-.hero {
+.coming-soon .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -36,7 +34,7 @@
 
 /* grid overlay */
 
-.hero::before {
+.coming-soon .hero::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -50,14 +48,14 @@
 
 /* content */
 
-.hero-content {
+.coming-soon .hero-content {
   text-align: center;
   max-width: 1200px;
   position: relative;
   z-index: 2;
 }
 
-.tag {
+.coming-soon .tag {
   display: inline-block;
   padding: 8px 18px;
   border-radius: 999px;
@@ -69,26 +67,25 @@
   margin-bottom: 25px;
 }
 
-.hero-image {
+.coming-soon .hero-image {
   width: min(1200px, 93vw);
   display: block;
   margin: auto;
   filter: drop-shadow(0 45px 80px rgba(0, 0, 0, 0.6));
-  align-items: center;
 }
 
-.hero h1 {
+.coming-soon .hero h1 {
   margin-top: 45px;
   font-size: clamp(3.2rem, 6vw, 6rem);
   line-height: 0.95;
   font-weight: 700;
 }
 
-.hero h1 span {
+.coming-soon .hero h1 span {
   color: #3b83ff;
 }
 
-.hero p {
+.coming-soon .hero p {
   margin: 28px auto 0;
   max-width: 700px;
   color: #bdbdc4;
@@ -99,50 +96,11 @@
 /* ---------- MOBILE ---------- */
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0 25px;
-    height: 70px;
-  }
-
-  .company {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-  }
-
-  .logo {
-    height: 34px;
-  }
-
-  .hero {
-    padding-top: 110px;
-  }
-
-  .hero-image {
+  .coming-soon .hero-image {
     width: 100%;
   }
 
-  .hero p {
+  .coming-soon .hero p {
     font-size: 1rem;
   }
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgb(255, 255, 255);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: 0.3s;
-}
-
-.logo-container:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.logo {
-  height: 44px;
-  display: block;
 }

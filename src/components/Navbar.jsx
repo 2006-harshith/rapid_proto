@@ -1,75 +1,71 @@
-import React from "react";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { navLinks } from "../data/navLinks.js";
 
 export default function Navbar() {
-  return (
-    <div>
-      <header className="navbar" id="navbar">
-        <div className="navbar__container">
-          <a href="#" className="navbar__brand">
-            Rapid Proto Tech
-          </a>
-          <nav className="navbar__nav">
-            <ul className="primary-nav" id="primary-nav">
-              {/* Nav items will be dynamically moved here by JS 
-                    High priority links should come first in this initial HTML */}
-              <li>
-                <a href="#" className="nav-link">
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Analytics
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Reports
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Tasks
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Users
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a href="#" className="nav-link">
-                  Support
-                </a>
-              </li>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
 
-              {/* The "More" dropdown, initially empty and hidden  */}
-              <li id="more-menu-item">
-                <a
-                  href="#"
+  return (
+    <header className="navbar">
+      <div className="navbar__container">
+        <Link to="/" className="navbar__brand" onClick={closeMenu}>
+          Rapid Proto Tech
+        </Link>
+
+        <button
+          type="button"
+          className="navbar__toggle"
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+          aria-controls="primary-nav"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+        <nav className="navbar__nav" aria-label="Main Navigation">
+          <ul
+            id="primary-nav"
+            className={`primary-nav${menuOpen ? " primary-nav--open" : ""}`}
+          >
+            {navLinks.map((link) => (
+              <li
+                key={link.to}
+                className={link.children ? "nav-item--dropdown" : undefined}
+              >
+                <NavLink
+                  to={link.to}
+                  end={link.to === "/"}
                   className="nav-link"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                  aria-haspopup={link.children ? "true" : undefined}
+                  onClick={closeMenu}
                 >
-                  More &#x25BE;
-                </a>
-                <ul className="more-dropdown" id="more-dropdown"></ul>
+                  {link.label}
+                  {link.children && " ▾"}
+                </NavLink>
+
+                {link.children && (
+                  <ul className="nav-dropdown">
+                    {link.children.map((child) => (
+                      <li key={child.to}>
+                        <NavLink
+                          to={child.to}
+                          className="nav-link"
+                          onClick={closeMenu}
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-    </div>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }

@@ -1,23 +1,8 @@
-// // import Comingsoon from "./components/Comingsoon.jsx";
-// import Mainpage from "./components/Mainpage.jsx";
-
-// function App() {
-//   return <Mainpage />;
-// }
-
-// export default App;
-
-import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  Link,
-} from "react-router-dom";
-import Mainpage from "./components/Mainpage.jsx";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import Comingsoon from "./components/Comingsoon.jsx";
+import Mainpage from "./pages/Mainpage.jsx";
+import Comingsoon from "./pages/Comingsoon.jsx";
 
 function LayoutWrapper() {
   return (
@@ -26,7 +11,7 @@ function LayoutWrapper() {
       <Navbar />
 
       {/* Dynamic Center Zone */}
-      <main style={{ padding: "2rem" }}>
+      <main>
         <Outlet />
       </main>
 
@@ -36,19 +21,19 @@ function LayoutWrapper() {
   );
 }
 
-// 2. Map URLs to your components
+// Map URLs to components
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LayoutWrapper />, // Loads the frame
+    element: <LayoutWrapper />,
     children: [
-      { index: true, element: <Mainpage /> }, // Goes to <Outlet /> when URL is /
+      { index: true, element: <Mainpage /> },
+      // Any page not built yet shows the Coming Soon page
+      { path: "*", element: <Comingsoon /> },
     ],
   },
 ]);
 
-// 3. Provide the router layout to the application
 export default function App() {
   return <RouterProvider router={router} />;
-  // return <Comingsoon />;
 }

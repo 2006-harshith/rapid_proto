@@ -1,21 +1,11 @@
-import React from "react";
-
 import "./Comingsoon.css";
-import logo from "./../assets/logo.png";
-import comingSoonImg from "./../assets/coming_soon2_transp.png";
+import comingSoonImg from "../assets/images/coming_soon2_transp.png";
 
+// Uses the site Navbar/Footer, but the hero keeps its own original styling
 export default function Comingsoon() {
   return (
-    <div>
-      <nav className="navbar">
-        <div className="company">Rapid Proto Tech</div>
-
-        <div className="logo-container">
-          <img src={logo} alt="Rapid Proto Tech" className="logo" />
-        </div>
-      </nav>
-
-      <main className="hero">
+    <div className="coming-soon">
+      <section className="hero">
         <div className="hero-content">
           <img src={comingSoonImg} alt="coming soon" className="hero-image" />
 
@@ -29,7 +19,7 @@ export default function Comingsoon() {
             extraordinary.
           </p>
         </div>
-      </main>
+      </section>
     </div>
   );
 }

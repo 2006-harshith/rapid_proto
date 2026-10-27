@@ -1,12 +1,3 @@
-/* :root {
-  --footer-bg: #dddddd;
-  --footer-text-color: #555555;
-  --footer-link-color: #111111;
-  --footer-link-hover-color: #007bff;
-  --footer-border-color: #e7e7e7;
-} */
-/* src/components/Footer.css */
-
 .footer-centered {
   background-color: var(--bg-surface);
   color: var(--text-secondary);
@@ -32,15 +23,8 @@
   height: auto;
 }
 
-.footer-centered__logo path {
-  fill: var(--text-main);
-}
-
 .footer-centered__nav ul,
 .footer-centered__social ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
   display: flex;
   flex-wrap: wrap; /* Allow links to wrap on very narrow screens */
   justify-content: center;
@@ -50,9 +34,7 @@
 .footer-centered__nav a,
 .footer-centered__social a {
   color: var(--text-main);
-  text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease-in-out;
 }
 
 .footer-centered__nav a:hover,
@@ -64,7 +46,7 @@
   width: 22px;
   height: 22px;
   fill: var(--text-secondary);
-  transition: fill 0.2s ease-in-out;
+  transition: fill var(--transition-speed) ease-in-out;
 }
 
 .footer-centered__social a:hover svg {
@@ -73,6 +55,5 @@
 
 .footer-centered__copyright {
   font-size: 0.875rem;
-  margin: 0;
   color: var(--text-secondary);
 }

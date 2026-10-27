@@ -37,23 +37,36 @@
 
 .heroActions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
 }
 
-/* Optional styling for quick CTAs */
-.btnPrimary {
-  background-color: var(--accent-color, #0066cc);
-  color: #fff;
+.btnPrimary,
+.btnSecondary {
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
+  border-radius: var(--border-radius);
   font-weight: 600;
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+
+.btnPrimary {
+  background-color: var(--color-secondary);
+  color: var(--bg-main);
+}
+
+.btnPrimary:hover {
+  background-color: var(--color-accent-secondary);
 }
 
 .btnSecondary {
   border: 1px solid currentColor;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
+  color: var(--text-ternary);
+}
+
+.btnSecondary:hover {
+  color: var(--color-accent-main);
 }
