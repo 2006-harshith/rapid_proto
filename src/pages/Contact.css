@@ -1,0 +1,14 @@
+.contact-page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.contact-page h1 {
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.contact-page p {
+  color: var(--text-secondary);
+}

@@ -4,12 +4,12 @@ export const navLinks = [
   { label: "Home", to: "/" },
   {
     label: "Services",
-    to: "/services",
     children: [
-      { label: "SLS 3D Printing", to: "/services/sls-printing" },
-      { label: "Rapid Prototyping", to: "/services/rapid-prototyping" },
+      { label: "SLA", name: "Stereolithography", to: "/services/sla" },
+      { label: "SLS", name: "Selective Laser Sintering", to: "/services/sls" },
+      { label: "MJF", name: "Multi Jet Fusion", to: "/services/mjf" },
+      { label: "SRM", name: "Silicone Rubber Molding", to: "/services/srm" },
     ],
   },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Contact us", to: "/contact", cta: true },
 ];

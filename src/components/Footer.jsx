@@ -19,11 +19,13 @@ export default function Footer() {
           aria-label="Main Footer Navigation"
         >
           <ul>
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link to={link.to}>{link.label}</Link>
-              </li>
-            ))}
+            {navLinks
+              .flatMap((link) => link.children ?? link)
+              .map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to}>{link.label}</Link>
+                </li>
+              ))}
           </ul>
         </nav>
 
