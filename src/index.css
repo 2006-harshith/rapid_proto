@@ -7,7 +7,7 @@
 
   /* Text Hierarchy */
   --text-main: #0f172a; /* Dark Slate Headings */
-  --text-secondary: #64748b; /* Muted Body Text */
+  --text-secondary: #373f4a; /* Muted Body Text */
   --text-ternary: #ffffffd8;
 
   /* Surfaces & Canvas */
@@ -16,7 +16,20 @@
   --bg-surface: #f8fafc; /* Light Slate Cards */
   --border-color: #e2e8f0; /* Clean Divider Border */
 
-  --font-ibm-plex: "IBM Plex Sans", sans-serif;
+  /* Typography — change the font/weights here, everything else uses these */
+  --font-fallback:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-primary: "Lato", var(--font-fallback); /* Body text */
+  --font-title: "Lato", var(--font-fallback); /* Headings & titles */
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --font-weight-primary: var(--font-weight-light); /* Body text */
+  --font-weight-title: var(--font-weight-regular); /* Headings & titles */
 
   /* Layout */
   --navbar-height: 70px;
@@ -31,6 +44,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+
 html,
 body,
 #root {
@@ -38,13 +56,23 @@ body,
   min-height: 100vh;
 }
 body {
-  font-family: var(--font-ibm-plex);
-  font-optical-sizing: auto;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-primary);
   font-style: normal;
   color: var(--text-main);
   background-color: var(--bg-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-title);
 }
 
 ul {
