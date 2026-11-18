@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import logo from "../assets/logo.png";
-import { navLinks } from "../data/navLinks.js";
+import logo from "../../assets/logo.png";
+import { navLinks } from "../../data/navLinks.js";
 
 export default function Footer() {
   const year = new Date().getFullYear();

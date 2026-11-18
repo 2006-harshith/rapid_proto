@@ -3,7 +3,7 @@ import slaImg from "../assets/images/technologies/sla.jpg";
 import slsImg from "../assets/images/technologies/sls.jpg";
 import mjfImg from "../assets/images/technologies/mjf.jpg";
 import srmImg from "../assets/images/technologies/srm.jpg";
-import batteryImg from "../assets/images/home/battery-cell-holder.jpg";
+import batteryImg from "../assets/images/home/battery_cell_holder_2.png";
 import piaggioLogo from "../assets/images/clients/piaggio.png";
 import bajajLogo from "../assets/images/clients/bajaj.png";
 import pricolLogo from "../assets/images/clients/pricol.png";

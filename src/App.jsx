@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
+import Navbar from "./components/layout/Navbar.jsx";
+import Footer from "./components/layout/Footer.jsx";
 import Mainpage from "./pages/Mainpage.jsx";
-import Sla from "./pages/Sla.jsx";
-import Sls from "./pages/Sls.jsx";
-import Mjf from "./pages/Mjf.jsx";
-import Srm from "./pages/Srm.jsx";
+import Sla from "./pages/services/Sla.jsx";
+import Sls from "./pages/services/Sls.jsx";
+import Mjf from "./pages/services/Mjf.jsx";
+import Srm from "./pages/services/Srm.jsx";
 import Contact from "./pages/Contact.jsx";
 import Comingsoon from "./pages/Comingsoon.jsx";
 

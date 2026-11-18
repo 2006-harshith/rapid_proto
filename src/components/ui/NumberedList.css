@@ -1,0 +1,26 @@
+.numbered-list {
+  list-style: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.numbered-list li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.numbered-list__num {
+  font-family: var(--font-title);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  color: var(--color-secondary);
+}
+
+.numbered-list p {
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--text-main);
+}
