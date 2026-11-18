@@ -7,19 +7,23 @@ import Section from "../ui/Section.jsx";
  * columns = [{ key, label, to?, highlight? }]  (`to` links the header to that
  *            service page; `highlight` marks the current page's column)
  * rows    = [{ criteria, values: { [column.key]: text } }]
+ * Also used for other row × column data (e.g. the SRM material guide), with
+ * `criteriaLabel` naming the first column.
  * Scrolls sideways inside its frame on phones.
  */
 export default function ComparisonTable({
   title,
+  subtitle,
   criteriaLabel = "Criteria",
   columns,
   rows,
+  note,
   tone,
 }) {
   const hl = (col) => (col.highlight ? "data-table__hl" : undefined);
 
   return (
-    <Section tone={tone} title={title}>
+    <Section tone={tone} title={title} subtitle={subtitle} note={note}>
       <div className="table-wrap table-wrap--scroll">
         <table className="data-table data-table--compare">
           <thead>

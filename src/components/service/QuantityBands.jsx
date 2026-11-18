@@ -5,7 +5,10 @@ import Section from "../ui/Section.jsx";
 export default function QuantityBands({ title, bands, note, tone }) {
   return (
     <Section tone={tone} title={title} note={note}>
-      <ol className="qty">
+      <ol
+        className={bands.length > 3 ? "qty qty--many" : "qty"}
+        style={{ "--qty-cols": bands.length }}
+      >
         {bands.map((band, i) => (
           <li key={band.stage} className="qty__band">
             <span className="qty__bar" aria-hidden="true">

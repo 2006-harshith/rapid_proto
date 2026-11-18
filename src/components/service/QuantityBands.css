@@ -1,7 +1,7 @@
 .qty {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--qty-cols, 3), 1fr); /* one column per band */
   gap: 1.5rem;
 }
 
@@ -64,6 +64,13 @@
   font-size: 0.9375rem;
   line-height: 1.65;
   color: var(--text-secondary);
+}
+
+/* 4+ bands get cramped on tablets: wrap to 2 per row */
+@media (max-width: 1024px) {
+  .qty--many {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
