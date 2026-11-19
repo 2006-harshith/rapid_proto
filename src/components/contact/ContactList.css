@@ -1,0 +1,74 @@
+.contact-list__row {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-list dt {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.contact-list dd {
+  margin-top: 0.3125rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.contact-list a {
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  transition:
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
+}
+
+.contact-list a:hover {
+  color: var(--color-secondary);
+  border-bottom-color: currentColor;
+}
+
+/* label column on the left */
+.contact-list--inline .contact-list__row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.contact-list--inline dd {
+  margin-top: 0;
+}
+
+/* ---------- On navy ---------- */
+
+.contact-list--dark .contact-list__row {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.contact-list--dark dt {
+  color: var(--color-accent-main);
+}
+
+.contact-list--dark dd {
+  color: var(--bg-main);
+}
+
+.contact-list--dark a {
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-list--dark a:hover {
+  color: var(--color-accent-main);
+}
+
+@media (max-width: 768px) {
+  .contact-list--inline .contact-list__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

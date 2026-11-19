@@ -55,6 +55,21 @@
   background-color: var(--color-accent-main);
 }
 
+/* small uppercase label above the title */
+.section-eyebrow {
+  margin-bottom: 0.875rem;
+  font-family: var(--font-title);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.section--dark .section-eyebrow {
+  color: var(--color-accent-main);
+}
+
 /* title + subtitle on one row */
 .section-head {
   display: flex;
@@ -82,9 +97,12 @@
   gap: 4rem;
 }
 
-.section-split .section-heading {
+.section-split .section-title {
   position: sticky;
   top: calc(var(--navbar-height) + 2rem);
+}
+
+.section-split .section-heading {
   margin-bottom: 0;
 }
 
@@ -105,7 +123,7 @@
     gap: 2.5rem;
   }
 
-  .section-split .section-heading {
+  .section-split .section-title {
     position: static;
   }
 }

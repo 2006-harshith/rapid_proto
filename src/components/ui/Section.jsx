@@ -7,7 +7,9 @@ import "./Section.css";
  * layout   "stack" (title above content) | "split" (sticky title left, content right)
  * title    section heading (h2) with the short accent rule
  * subtitle short line shown to the right of the title (stack layout only)
+ * eyebrow  small uppercase label above the title
  * note     small italic footnote under the content
+ * className extra class on the band (e.g. to change its padding)
  *
  * Without a title it is just the band + container, for sections that
  * place the `.section-heading` class themselves (see ServiceOverview).
@@ -17,14 +19,24 @@ export default function Section({
   tone = "plain",
   layout = "stack",
   title,
+  eyebrow,
   subtitle,
   note,
+  className = "",
   children,
 }) {
-  const heading = title && <h2 className="section-heading">{title}</h2>;
+  const heading = title && (
+    <div className="section-title">
+      {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
+      <h2 className="section-heading">{title}</h2>
+    </div>
+  );
 
   return (
-    <section id={id} className={`section section--${tone}`}>
+    <section
+      id={id}
+      className={`section section--${tone}${className ? ` ${className}` : ""}`}
+    >
       <div className="container">
         {layout === "split" ? (
           <div className="section-split">
