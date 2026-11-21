@@ -1,14 +1,11 @@
 // MJF page content — source: brochures/RPT_MJF_Information_Sheet.pdf
-// Rendered by src/pages/services/Mjf.jsx. "[Label](/route)" inside a string becomes a link.
-import image from "../../assets/images/technologies/mjf.jpg";
+// Rendered by src/pages/services/ServicePage.jsx, which shows the sections this file has keys for (order + tones are set there).
+// Code, name, route and photo come from the service catalogue (index.js). "[Label](/route)" inside a string becomes a link.
 
 export const mjf = {
   hero: {
-    title: "Multi Jet Fusion",
     lead: "Production-grade nylon 3D printing for functional prototypes and end-use parts",
-    image,
     imageAlt: "Nylon parts produced by HP Multi Jet Fusion",
-    link: { label: "How MJF works", href: "#process" },
   },
 
   overview:
@@ -225,8 +222,8 @@ export const mjf = {
     title: "Process comparison: MJF vs SLA vs SLS",
     columns: [
       { key: "mjf", label: "MJF", highlight: true },
-      { key: "sla", label: "SLA", to: "/services/sla" },
-      { key: "sls", label: "SLS", to: "/services/sls" },
+      { key: "sla", label: "SLA" },
+      { key: "sls", label: "SLS" },
     ],
     rows: [
       {

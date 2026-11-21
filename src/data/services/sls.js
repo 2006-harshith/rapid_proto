@@ -1,14 +1,11 @@
 // SLS page content — source: brochures/RPT_SLS_Information_Sheet.pdf
-// Rendered by src/pages/services/Sls.jsx. "[Label](/route)" inside a string becomes a link.
-import image from "../../assets/images/technologies/sls.jpg";
+// Rendered by src/pages/services/ServicePage.jsx, which shows the sections this file has keys for (order + tones are set there).
+// Code, name, route and photo come from the service catalogue (index.js). "[Label](/route)" inside a string becomes a link.
 
 export const sls = {
   hero: {
-    title: "Selective Laser Sintering",
     lead: "Strong, heat-resistant nylon 3D printing for functional parts and small batches",
-    image,
     imageAlt: "Nylon parts produced by SLS",
-    link: { label: "How SLS works", href: "#process" },
   },
 
   overview:
@@ -225,8 +222,8 @@ export const sls = {
     title: "Process comparison: SLS vs MJF vs SLA",
     columns: [
       { key: "sls", label: "SLS", highlight: true },
-      { key: "mjf", label: "MJF", to: "/services/mjf" },
-      { key: "sla", label: "SLA", to: "/services/sla" },
+      { key: "mjf", label: "MJF" },
+      { key: "sla", label: "SLA" },
     ],
     rows: [
       {

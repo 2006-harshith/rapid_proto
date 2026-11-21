@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import "./DataTable.css";
 import Section from "../ui/Section.jsx";
+import { findService } from "../../data/services/index.js";
 
 /**
  * "Process comparison": criteria rows × process columns.
- * columns = [{ key, label, to?, highlight? }]  (`to` links the header to that
- *            service page; `highlight` marks the current page's column)
+ * columns = [{ key, label, highlight? }]  (`highlight` marks the current page's
+ *            column; any other column whose key is a service code, e.g. "sla",
+ *            links its header to that service page)
  * rows    = [{ criteria, values: { [column.key]: text } }]
  * Also used for other row × column data (e.g. the SRM material guide), with
  * `criteriaLabel` naming the first column.
@@ -21,6 +23,7 @@ export default function ComparisonTable({
   tone,
 }) {
   const hl = (col) => (col.highlight ? "data-table__hl" : undefined);
+  const linkTo = (col) => !col.highlight && findService(col.key)?.route;
 
   return (
     <Section tone={tone} title={title} subtitle={subtitle} note={note}>
@@ -31,8 +34,8 @@ export default function ComparisonTable({
               <th scope="col">{criteriaLabel}</th>
               {columns.map((col) => (
                 <th key={col.key} scope="col" className={hl(col)}>
-                  {col.to ? (
-                    <Link to={col.to} className="data-table__link">
+                  {linkTo(col) ? (
+                    <Link to={linkTo(col)} className="data-table__link">
                       {col.label}
                     </Link>
                   ) : (

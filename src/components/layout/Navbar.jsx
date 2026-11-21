@@ -20,14 +20,14 @@ export default function Navbar() {
   return (
     <header className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
       <div className="navbar__container">
-        <Link to="/" className="navbar__brand" onClick={closeMenu}>
+        <Link
+          to="/"
+          className="navbar__brand"
+          aria-label="Rapid Proto Tech, home"
+          onClick={closeMenu}
+        >
           <img src={logo} alt="" className="navbar__logo" />
-          <span className="navbar__name">
-            Rapid Proto Tech
-            <span className="navbar__tagline">
-              3D Printing &amp; Rapid Prototyping
-            </span>
-          </span>
+          <span className="navbar__name">RPT</span>
         </Link>
 
         <button

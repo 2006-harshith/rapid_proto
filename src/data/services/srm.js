@@ -1,14 +1,11 @@
 // SRM page content — source: brochures/RPT_SRM_Information_Sheet.pdf
-// Rendered by src/pages/services/Srm.jsx. "[Label](/route)" inside a string becomes a link.
-import image from "../../assets/images/technologies/srm.jpg";
+// Rendered by src/pages/services/ServicePage.jsx, which shows the sections this file has keys for (order + tones are set there).
+// Code, name, route and photo come from the service catalogue (index.js). "[Label](/route)" inside a string becomes a link.
 
 export const srm = {
   hero: {
-    title: "Silicone Rubber Moulding",
     lead: "Vacuum casting for production-quality polyurethane parts in small batches",
-    image,
     imageAlt: "Polyurethane parts cast in silicone moulds",
-    link: { label: "How SRM works", href: "#process" },
   },
 
   overview:

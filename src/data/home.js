@@ -1,12 +1,8 @@
 // Home page content — source: brochures/Brochure.docx
 // Rendered by src/pages/Mainpage.jsx. Contact details come from company.js,
-// technology codes/names/routes from navLinks.js (serviceLinks).
-import { serviceLinks } from "./navLinks.js";
+// technology cards (code, name, route, photo, summary) from the service catalogue (services/index.js).
+import { services } from "./services/index.js";
 import heroImage from "../assets/images/home/hero.jpg";
-import slaImg from "../assets/images/technologies/sla.jpg";
-import slsImg from "../assets/images/technologies/sls.jpg";
-import mjfImg from "../assets/images/technologies/mjf.jpg";
-import srmImg from "../assets/images/technologies/srm.jpg";
 import batteryImg from "../assets/images/home/battery_cell_holder_2.png";
 import piaggioLogo from "../assets/images/clients/piaggio.png";
 import bajajLogo from "../assets/images/clients/bajaj.png";
@@ -15,26 +11,6 @@ import lmwLogo from "../assets/images/clients/lmw.png";
 import tvsLogo from "../assets/images/clients/tvs.png";
 import boschLogo from "../assets/images/clients/bosch.png";
 import ultraLogo from "../assets/images/clients/ultra.png";
-
-// Card details per service code; merged with serviceLinks below.
-const techDetails = {
-  SLA: {
-    image: slaImg,
-    text: "Delivers exceptional dimensional accuracy and a refined surface finish using photosensitive resin. Well suited to intricate R&D models and aesthetic-grade prototypes.",
-  },
-  SLS: {
-    image: slsImg,
-    text: "Produces durable Nylon components engineered for elevated heat resistance. A practical choice for functional testing and efficient small-batch runs.",
-  },
-  MJF: {
-    image: mjfImg,
-    text: "HP MJF technology yields lightweight components with excellent structural integrity and rapid production cycles — well matched to automotive validation and short-run custom builds.",
-  },
-  SRM: {
-    image: srmImg,
-    text: "Vacuum-cast components built from inspected SLA masters, allowing several units to be reproduced from a single tool while keeping per-unit costs contained.",
-  },
-};
 
 export const home = {
   hero: {
@@ -55,17 +31,18 @@ export const home = {
       { label: "Facilities", value: "Coimbatore & Pune" },
       {
         label: "Technologies",
-        value: serviceLinks.map((s) => s.label).join(", "),
+        value: services.map((s) => s.code).join(", "),
       },
     ],
   },
   technologies: {
     title: "Our Technologies & Capabilities",
-    items: serviceLinks.map((s) => ({
-      code: s.label,
+    items: services.map((s) => ({
+      code: s.code,
       name: s.name,
-      to: s.to,
-      ...techDetails[s.label],
+      to: s.route,
+      image: s.image,
+      text: s.summary,
     })),
   },
   why: {

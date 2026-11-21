@@ -1,14 +1,11 @@
 // SLA page content — source: brochures/RPT_SLA_Information_Sheet.pdf
-// Rendered by src/pages/services/Sla.jsx. "[Label](/route)" inside a string becomes a link.
-import image from "../../assets/images/technologies/sla.jpg";
+// Rendered by src/pages/services/ServicePage.jsx, which shows the sections this file has keys for (order + tones are set there).
+// Code, name, route and photo come from the service catalogue (index.js). "[Label](/route)" inside a string becomes a link.
 
 export const sla = {
   hero: {
-    title: "Stereolithography",
     lead: "High-accuracy, fine-finish 3D printing for product development",
-    image,
     imageAlt: "SLA-printed parts with a smooth finish",
-    link: { label: "How SLA works", href: "#process" },
   },
 
   overview:
