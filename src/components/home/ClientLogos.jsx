@@ -8,7 +8,7 @@ export default function ClientLogos({ label, items, tone }) {
       <p className="client-logos__label">{label}</p>
       <ul className="client-logos__list">
         {items.map((client) => (
-          <li key={client.name}>
+          <li key={client.name} className="client-logos__item">
             <img src={client.logo} alt={client.name} loading="lazy" />
           </li>
         ))}

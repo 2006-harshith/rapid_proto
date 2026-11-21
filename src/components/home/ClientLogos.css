@@ -19,7 +19,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem 3.5rem;
+  gap: 0 0.5rem;
+  margin: -1rem 0; /* cancels the items' top/bottom padding, keeps the band's spacing */
+}
+
+/* Padding = the hover area around each logo; it takes the place of the old
+   2rem × 3.5rem gap, so the logos sit where they did */
+.client-logos__item {
+  padding: 1rem 1.5rem;
 }
 
 .client-logos__list img {
@@ -35,14 +42,18 @@
     opacity var(--transition-speed) ease;
 }
 
-.client-logos__list img:hover {
+.client-logos__item:hover img {
   filter: none;
   opacity: 1;
 }
 
 @media (max-width: 768px) {
   .client-logos__list {
-    gap: 1.75rem 2.5rem;
+    margin: -0.875rem 0;
+  }
+
+  .client-logos__item {
+    padding: 0.875rem 1rem;
   }
 
   .client-logos__list img {
