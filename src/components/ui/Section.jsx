@@ -1,4 +1,10 @@
-import "./Section.css";
+import SectionHeading from "./SectionHeading.jsx";
+
+const TONES = {
+  plain: "bg-white",
+  surface: "border-y border-line bg-surface",
+  dark: "bg-navy-deep text-soft",
+};
 
 /**
  * Page section: full-width band + centred container + optional title.
@@ -9,10 +15,11 @@ import "./Section.css";
  * subtitle short line shown to the right of the title (stack layout only)
  * eyebrow  small uppercase label above the title
  * note     small italic footnote under the content
- * className extra class on the band (e.g. to change its padding)
+ * slim     less vertical padding (e.g. the client logo band)
  *
  * Without a title it is just the band + container, for sections that
- * place the `.section-heading` class themselves (see ServiceOverview).
+ * place a <SectionHeading> themselves (see ServiceOverview).
+ * The band carries data-tone, so headings/eyebrows inside a dark band recolour themselves.
  */
 export default function Section({
   id,
@@ -22,41 +29,51 @@ export default function Section({
   eyebrow,
   subtitle,
   note,
-  className = "",
+  slim = false,
   children,
 }) {
+  const split = layout === "split";
   const heading = title && (
-    <div className="section-title">
-      {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
-      <h2 className="section-heading">{title}</h2>
+    <div
+      className={
+        split ? "lg:sticky lg:top-[calc(var(--spacing-navbar)+2rem)]" : ""
+      }
+    >
+      {eyebrow && (
+        <p className="mb-3.5 font-title text-label font-bold tracking-[0.12em] text-blue uppercase in-data-[tone=dark]:text-mint">
+          {eyebrow}
+        </p>
+      )}
+      <SectionHeading>{title}</SectionHeading>
     </div>
   );
 
   return (
     <section
       id={id}
-      className={`section section--${tone}${className ? ` ${className}` : ""}`}
+      data-tone={tone}
+      className={`${TONES[tone]} ${slim ? "py-10 md:py-14" : "py-14 md:py-20 lg:py-24"}`}
     >
-      <div className="container">
-        {layout === "split" ? (
-          <div className="section-split">
-            <div className="section-split__aside">{heading}</div>
+      <div className="site-container">
+        {split ? (
+          <div className="grid gap-8 md:gap-10 lg:grid-cols-[4fr_8fr] lg:gap-16">
+            <div>{heading}</div>
             <div>{children}</div>
           </div>
         ) : (
           <>
-            {subtitle ? (
-              <div className="section-head">
+            {heading && (
+              <div className="mb-8 flex flex-col gap-3 md:mb-12 md:flex-row md:items-end md:justify-between md:gap-8">
                 {heading}
-                <p className="section-head__subtitle">{subtitle}</p>
+                {subtitle && (
+                  <p className="text-md text-muted md:pb-1.5">{subtitle}</p>
+                )}
               </div>
-            ) : (
-              heading
             )}
             {children}
           </>
         )}
-        {note && <p className="section-note">{note}</p>}
+        {note && <p className="mt-7 text-sm text-muted italic">{note}</p>}
       </div>
     </section>
   );

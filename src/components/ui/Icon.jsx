@@ -1,5 +1,3 @@
-import "./Icon.css";
-
 // Simple line icons (24×24, stroke = currentColor, so they take the text colour).
 const PATHS = {
   phone: (
@@ -25,13 +23,23 @@ const PATHS = {
   ),
   expand: <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />,
   shrink: <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7" />,
+  copy: (
+    <>
+      <rect x="9" y="9" width="12" height="12" rx="2" />
+      <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+    </>
+  ),
+  check: <path d="M20 6 9 17l-5-5" />,
 };
 
-/** Line icon by name: phone, email, address, website, expand, shrink. Decorative (aria-hidden). */
-export default function Icon({ name }) {
+/**
+ * Line icon by name: phone, email, address, website, expand, shrink, copy, check. Decorative (aria-hidden).
+ * className sets the size (default 1.125rem), e.g. className="size-3.5".
+ */
+export default function Icon({ name, className = "size-4.5" }) {
   return (
     <svg
-      className="icon"
+      className={`block shrink-0 ${className}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

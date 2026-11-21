@@ -1,9 +1,0 @@
-.inline-link {
-  --line-offset: -1px;
-  color: var(--color-secondary);
-  font-weight: var(--font-weight-bold);
-}
-
-.inline-link:hover {
-  color: var(--color-main);
-}

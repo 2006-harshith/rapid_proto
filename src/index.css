@@ -1,134 +1,200 @@
-:root {
-  /* Brand & Accents */
-  --color-main: #0b1b3dd3; /* Deep Corporate Navy (Primary Buttons) */
-  --color-secondary: #007bff; /* Vibrant Hummingbird Blue */
-  --color-accent-main: #7ec699; /* Mint / Lime Accent (Badges) */
-  --color-accent-secondary: #3d8fd1; /* Hover Accent Blue */
+@import "tailwindcss";
 
-  /* Text Hierarchy */
-  --text-main: #0f172a; /* Dark Slate Headings */
-  --text-secondary: #373f4a; /* Muted Body Text */
-  --text-ternary: #ffffffd8;
+/* ==========================================================================
+   Design tokens: the only colours, fonts and shadows components may use.
+   Each token becomes Tailwind classes, e.g. --color-blue -> text-blue,
+   bg-blue, border-blue, bg-blue/10. Tailwind's own colour palette and fonts
+   are switched off, so `text-gray-500` / `font-serif` don't exist.
+   ========================================================================== */
+@theme {
+  /* ---- Colours ---- */
+  --color-*: initial;
+  --color-navy: #0b1b3dd3; /* deep corporate navy: primary pill buttons, step numbers */
+  --color-blue: #007bff; /* vibrant blue: links, accents, highlights */
+  --color-blue-light: #3d8fd1; /* hover blue */
+  --color-mint: #7ec699; /* mint accent: labels and rules on dark */
+  --color-ink: #0f172a; /* headings, main text */
+  --color-muted: #373f4a; /* body copy, secondary text */
+  --color-soft: #ffffffd8; /* body text on dark bands */
+  --color-white: #ffffff; /* page background, text on dark */
+  --color-navy-deep: #060f20e8; /* dark bands and cards */
+  --color-surface: #f8fafc; /* light slate bands and cards */
+  --color-line: #e2e8f0; /* dividers and borders */
 
-  /* Surfaces & Canvas */
-  --bg-main: #ffffff; /* Pure White Backdrop */
-  --bg-secondary: #060f20e8;
-  --bg-surface: #f8fafc; /* Light Slate Cards */
-  --border-color: #e2e8f0; /* Clean Divider Border */
-
-  /* Typography — change the font/weights here, everything else uses these */
-  --font-fallback:
-    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
-  --font-primary: "Lato", var(--font-fallback); /* Body text */
+  /* ---- Fonts: change here + the Google Fonts link in index.html ---- */
+  --font-*: initial;
+  --font-body:
+    "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif; /* body text (Light 300 by default) */
   --font-title:
-    "Plus Jakarta Sans", var(--font-fallback); /* Headings, titles & navbar */
+    "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif; /* headings, navbar, buttons, labels */
+  --default-font-family: var(--font-body);
 
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500; /* --font-title only (Lato has no 500/600) */
-  --font-weight-semibold: 600; /* --font-title only */
-  --font-weight-bold: 700;
-  --font-weight-black: 900;
+  /* ---- In-between text sizes (text-xs, sm, base, lg, xl, 2xl… still exist) ---- */
+  --text-label: 0.8125rem; /* 13px: eyebrows, small numbers */
+  --text-ui: 0.9375rem; /* 15px: nav, buttons, card copy, table cells */
+  --text-md: 1.0625rem; /* 17px: subtitles, list rows */
+  --text-lead: 1.1875rem; /* 19px: card titles, intro paragraphs */
 
-  --font-weight-primary: var(--font-weight-light); /* Body text */
-  --font-weight-title: var(--font-weight-regular); /* Headings & titles */
+  /* ---- Layout ---- */
+  --spacing-navbar: 4.375rem; /* 70px (64px on phones, below): h-navbar, top-navbar */
+  --container-site: 75rem; /* 1200px page width: max-w-site */
 
-  /* Layout */
-  --navbar-height: 70px;
-  --container-width: 1200px;
-  --border-radius: 6px;
-  --transition-speed: 0.2s;
+  /* ---- Shadows (soft black only) ---- */
+  --shadow-bar: 0 4px 20px rgb(0 0 0 / 0.06); /* scrolled navbar, small floating buttons */
+  --shadow-card: 0 16px 40px rgb(0 0 0 / 0.07); /* card hover */
+  --shadow-panel: 0 16px 40px rgb(0 0 0 / 0.1); /* dropdowns, menus */
+  --shadow-float: 0 24px 60px rgb(0 0 0 / 0.12); /* raised cards */
+  --shadow-photo: 0 24px 60px rgb(0 0 0 / 0.35); /* hero photo on navy */
+
+  /* ---- Motion: `transition`, `transition-colors`… default to this ---- */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: ease;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  :root {
+    /* Side padding of .site-container; swipe-row bleeds by the same amount */
+    --gutter: 1.25rem;
+
+    @media (width < 48rem) {
+      --spacing-navbar: 4rem;
+    }
+    @media (width >= 40rem) {
+      --gutter: 1.5rem;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--spacing-navbar);
+    -webkit-text-size-adjust: 100%;
+
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    font-weight: var(--font-weight-light);
+    color: var(--color-ink);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-title);
+    font-weight: var(--font-weight-normal);
+  }
+
+  a {
+    transition: color var(--default-transition-duration) ease;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--navbar-height);
-}
+/* ==========================================================================
+   Site utilities: patterns used by several components (see CLAUDE.md)
+   ========================================================================== */
 
-html,
-body,
-#root {
+/* Centred page column: max 1200px with the responsive side gutter */
+@utility site-container {
   width: 100%;
-  min-height: 100vh;
-}
-body {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-primary);
-  font-style: normal;
-  color: var(--text-main);
-  background-color: var(--bg-main);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-title);
-  font-weight: var(--font-weight-title);
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color var(--transition-speed) ease;
-}
-
-/* Underline link: grey -> thin line on hover -> blue when selected.
-   See "Design patterns" in CLAUDE.md. Tune per use with --line-inset/--line-offset. */
-.link-line {
+/* Text link: grey -> thin line grows in on hover -> blue when selected.
+   Tune per use with arbitrary properties:
+     [--line-inset:1rem]   left/right inset of the line (= the link's padding)
+     [--line-offset:4px]   distance of the line from the box bottom (negative = below)
+     [--link-rest|hover|active:var(--color-…)]   colours of the three states
+   Selected = `.active` (NavLink adds it) or aria-expanded="true" (open menu). */
+@utility link-line {
   position: relative;
-  color: var(--text-secondary);
-  transition: color calc(var(--transition-speed) * 1.5) ease;
+  color: var(--link-rest, var(--color-muted));
+  transition: color 300ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: var(--line-inset, 0);
+    right: var(--line-inset, 0);
+    bottom: var(--line-offset, -2px);
+    height: 1px;
+    background-color: currentColor; /* fades with the text colour */
+    transform: scaleX(var(--line-scale, 0));
+    transform-origin: left;
+    transition: transform 300ms ease;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--link-hover, var(--color-ink));
+      --line-scale: 1;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    color: var(--link-hover, var(--color-ink));
+    --line-scale: 1;
+  }
+
+  &.active {
+    color: var(--link-active, var(--color-blue));
+    --line-scale: 1;
+  }
 }
 
-.link-line::after {
-  content: "";
-  position: absolute;
-  left: var(--line-inset, 0);
-  right: var(--line-inset, 0);
-  bottom: var(--line-offset, -2px);
-  height: 1px;
-  background-color: currentColor; /* fades with the text colour */
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform calc(var(--transition-speed) * 1.5) ease;
-}
-
-.link-line:hover {
-  color: var(--text-main);
-}
-
-.link-line.active {
-  color: var(--color-secondary);
-}
-
-.link-line:hover::after,
-.link-line.active::after {
-  transform: scaleX(1);
-}
-
-/* Sticky footer: main grows to push the footer to the bottom */
-.site-layout {
+/* Phone card carousel: cards sit side by side and scroll sideways, snapping
+   to each card, with the next one peeking in from the screen edge.
+   Use it below a breakpoint: `grid sm:grid-cols-2 max-sm:swipe-row` */
+@utility swipe-row {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  gap: 0.875rem;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > * {
+    flex: 0 0 min(85%, 21rem);
+    scroll-snap-align: start;
+  }
 }
 
-.site-layout main {
-  flex: 1;
+/* Soft blue glow on the right of a navy hero. The hero needs
+   `relative overflow-hidden`, its content `relative`. */
+@utility hero-glow {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: var(--glow-right, -10%);
+    width: var(--glow-size, 55%);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--color-blue) 28%, transparent) 0%,
+      transparent 65%
+    );
+    pointer-events: none;
+  }
 }

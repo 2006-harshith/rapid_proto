@@ -34,14 +34,15 @@ function ScrollToTop() {
 
 function LayoutWrapper() {
   return (
-    <div className="site-layout">
+    // Sticky footer: main grows to push the footer to the bottom
+    <div className="flex min-h-dvh flex-col">
       <ScrollToTop />
 
       {/* Permanent Header */}
       <Navbar />
 
       {/* Dynamic Center Zone */}
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
 

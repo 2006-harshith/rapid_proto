@@ -1,7 +1,0 @@
-/* Default size; a parent can override with `.parent .icon { width; height }`. */
-.icon {
-  display: block;
-  flex-shrink: 0;
-  width: 1.125rem;
-  height: 1.125rem;
-}

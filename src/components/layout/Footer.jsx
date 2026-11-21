@@ -1,32 +1,26 @@
 import { Link } from "react-router-dom";
-import "./Footer.css";
 import logo from "../../assets/logo.png";
 import { navLinks } from "../../data/navLinks.js";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="footer-centered">
-      <div className="footer-centered__container">
-        <img
-          className="footer-centered__logo"
-          src={logo}
-          alt="Rapid Proto Tech"
-        />
+    <footer className="border-t border-line bg-surface px-(--gutter) py-10 text-center text-muted">
+      <div className="mx-auto flex max-w-200 flex-col items-center gap-6">
+        <img className="block h-auto w-30" src={logo} alt="Rapid Proto Tech" />
 
-        <div className="footer-centered__row">
-          <nav
-            className="footer-centered__nav"
-            aria-label="Main Footer Navigation"
-          >
-            <ul>
+        {/* links + divider + LinkedIn on one centred row; stacked on phones */}
+        <div className="flex flex-col items-center justify-center gap-x-7 gap-y-3 sm:flex-row sm:flex-wrap">
+          <nav aria-label="Main Footer Navigation">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-7">
               {navLinks
                 .flatMap((link) => link.children ?? link)
                 .map((link) => (
                   <li key={link.to}>
+                    {/* py-2 = a comfortable tap target; the line sits 4px below the text */}
                     <Link
                       to={link.to}
-                      className="footer-centered__link link-line"
+                      className="link-line block py-2 font-title leading-normal font-medium [--line-offset:0.25rem]"
                     >
                       {link.label}
                     </Link>
@@ -35,16 +29,17 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <span className="footer-centered__divider" aria-hidden="true" />
+          <span className="hidden h-5 w-px bg-line sm:block" aria-hidden="true" />
 
           <a
-            className="footer-centered__social"
+            className="group grid size-11 place-items-center rounded-full border border-line bg-white transition-colors hover:border-blue sm:size-9"
             href="https://www.linkedin.com/company/rapid-proto-tech/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Our LinkedIn Profile"
           >
             <svg
+              className="block size-4 fill-muted transition-colors group-hover:fill-blue"
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +50,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="footer-centered__copyright">
+        <p className="text-sm text-muted">
           &copy; {year} Rapid Proto Tech India Private Limited.
         </p>
       </div>

@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import "./RichText.css";
 
 // Markdown-style links: "[SLA](/services/sla)"
 const LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 
 /**
  * Renders a plain string from the data files, turning [label](/route)
- * into router links styled with the site's `.link-line` underline.
- * Lets content stay as plain strings while still linking other pages.
+ * into router links styled with the site's `link-line` underline (bold blue,
+ * navy on hover). Lets content stay as plain strings while still linking other pages.
  */
 export default function RichText({ text }) {
   const parts = [];
@@ -17,7 +16,11 @@ export default function RichText({ text }) {
     const [whole, label, to] = match;
     if (match.index > last) parts.push(text.slice(last, match.index));
     parts.push(
-      <Link key={match.index} to={to} className="inline-link link-line">
+      <Link
+        key={match.index}
+        to={to}
+        className="link-line font-bold [--line-offset:-1px] [--link-hover:var(--color-navy)] [--link-rest:var(--color-blue)]"
+      >
         {label}
       </Link>,
     );
