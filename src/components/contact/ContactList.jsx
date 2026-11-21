@@ -5,11 +5,13 @@ import { company } from "../../data/company.js";
 // "people" expands to one row per person (role · name, phone).
 const ROWS = {
   company: [{ label: "Company", value: company.name }],
-  phone: [{ label: "Telephone", link: company.phone }],
+  phone: [{ label: "Phone", link: company.phone }],
   email: [{ label: "E-mail", link: company.email }],
   website: [{ label: "Website", link: company.website, external: true }],
   facilities: [{ label: "Facilities", value: company.facilities }],
-  address: [{ label: company.address.title, value: company.address.lines.join(" ") }],
+  address: [
+    { label: company.address.title, value: company.address.lines.join(" ") },
+  ],
   people: company.people.map((p) => ({
     label: p.role,
     value: p.name,
@@ -23,9 +25,15 @@ const ROWS = {
  * tone    "dark" (on navy) | "light" (on white/surface)
  * layout  "stacked" (label above value) | "inline" (label column left)
  */
-export default function ContactList({ fields, tone = "dark", layout = "stacked" }) {
+export default function ContactList({
+  fields,
+  tone = "dark",
+  layout = "stacked",
+}) {
   return (
-    <dl className={`contact-list contact-list--${tone} contact-list--${layout}`}>
+    <dl
+      className={`contact-list contact-list--${tone} contact-list--${layout}`}
+    >
       {fields.flatMap((key) =>
         ROWS[key].map((row) => (
           <div key={`${key}-${row.label}`} className="contact-list__row">
